@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+tom_test:
+  name: tom
+  course: 4DSmith
+  allergy: crustaceans
+  medication: false
+  title: epi-pen
+
+sam_test:
+  name: sam
+  course: 3Bdancr
+  allergy: astma
+  medication: true
+  title: inhaler
+
+Dave_test:
+  name: Dave
+  course: 3BAlantic
+  allergy: astma
+  medication: true
+  title: inhaler
+  
+Tina_test:
+  name: Tina
+  course: 3BAlantic
+  allergy: nuts
+  medication: false
+  title: inhaler
