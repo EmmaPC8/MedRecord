@@ -4,7 +4,7 @@ require 'test_helper'
 
 class CreateRecordWorkflowTest < ActionDispatch::IntegrationTest
   test 'should try to create a new test records that does have the medication required for the students allergy' do
-    get '/records/new'
+    get 'http://localhost:3002/new'
     assert_response :success
 
     post '/records',
@@ -17,11 +17,14 @@ class CreateRecordWorkflowTest < ActionDispatch::IntegrationTest
     assert_response :ok
     assert_select 'div div', 5
     assert_select 'div div p', "name:\n   Bob"
-    # assert_select "div div p strong","Completed"
+    assert_select 'div div p strong', 'course'
+    assert_select 'div div p strong', 'allergy'
+    assert_select 'div div p strong', 'medication'
+    assert_select 'div div p strong', 'title'
   end
 
   test 'should try to create a new test records that does not have the medication required for the students allergy' do
-    get '/records/new'
+    get 'http://localhost:3002/new'
     assert_response :success
 
     post '/records',
@@ -34,5 +37,9 @@ class CreateRecordWorkflowTest < ActionDispatch::IntegrationTest
     assert_response :ok
     assert_select 'div div', 5
     assert_select 'div div p', "name:\n    Ava"
+    assert_select 'div div p strong', 'course'
+    assert_select 'div div p strong', 'allergy'
+    assert_select 'div div p strong', 'medication'
+    assert_select 'div div p strong', 'title'
   end
 end
