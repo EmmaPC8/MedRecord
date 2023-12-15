@@ -23,15 +23,32 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :created
   end
 
+  test 'should not create a record without an input to allergy' do
+      post records_url,params: { record: { allergy: '', course: @record.course, medication: @record.medication, name: @record.name, title: @record.title } }, as: :json
+    assert_not (200...299).include?(response.code.to_i)   # not ok
+  end
+
+  test 'should not create a record without an input to course' do
+    post records_url,params: { record: { allergy: @record.allergy, course: '', medication: @record.medication, name: @record.name, title: @record.title } }, as: :json
+  assert_not (200...299).include?(response.code.to_i)   # not ok
+end
+
+test 'should not create a record without input to name' do
+  post records_url,params: { record: { allergy: @record.allergy, course: @record.course, medication: @record.medication, name: '', title: @record.title } }, as: :json
+assert_not (200...299).include?(response.code.to_i)   # not ok
+end
+
+test 'should not create a record without input to title' do
+  post records_url,params: { record: { allergy: @record.allergy, course: @record.course, medication: @record.medication, name: @record.name, title: '' } }, as: :json
+assert_not (200...299).include?(response.code.to_i)   # not ok
+end
+
   test 'should show record' do
     get record_url(@record), as: :json
     assert_response :success
   end
 
-  # test "should get edit" do
-  #   get edit_record_url(@record), as: :json
-  #   assert_response :success
-  # end
+
 
   test 'should update record' do
     patch record_url(@record),
