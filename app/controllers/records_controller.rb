@@ -1,5 +1,7 @@
-class RecordsController < ApplicationController
-  before_action :set_record, only: %i[ show update destroy ]
+# frozen_string_literal: true
+
+class RecordsController < ApplicationController # rubocop:todo Style/Documentation
+  before_action :set_record, only: %i[show update destroy]
 
   # GET /records
   def index
@@ -39,13 +41,14 @@ class RecordsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_record
-      @record = Record.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def record_params
-      params.require(:record).permit(:name, :course, :allergy, :medication, :title)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_record
+    @record = Record.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def record_params
+    params.require(:record).permit(:name, :course, :allergy, :medication, :title)
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,15 +12,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_13_174100) do
-  create_table "records", force: :cascade do |t|
-    t.string "name"
-    t.string "course"
-    t.string "allergy"
-    t.boolean "medication"
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+ActiveRecord::Schema[7.0].define(version: 20_231_213_174_100) do
+  create_table 'records', force: :cascade do |t|
+    t.string 'name'
+    t.string 'course'
+    t.string 'allergy'
+    t.boolean 'medication'
+    t.string 'title'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
-
 end
